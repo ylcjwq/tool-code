@@ -1,32 +1,60 @@
-function minNumber() {
-    var m = arguments[0];
-    for (var i = 1; i < arguments.length; i++) {
-        if (arguments[i] < m) {
-            m = arguments[i]
-        }
-    }
-    return m;
+/**
+ * 返回数组中最小的数
+ * @param {(number|strng)[]} nums 需要查找的数组
+ * @returns {number} 最小的数字
+ */
+export function minNumber(nums) {
+    nums.sort((a,b) => a-b)
+    return Number(nums[0])
 }
 
-function maxNumber() {
-
+/**
+ * 返回数组中最大的数
+ * @param {(number|strng)[]} nums 需要查找的数组
+ * @returns {number} 最大的数字
+ */
+export function maxNumber(nums) {
+    nums.sort((a,b) => b-a)
+    return Number(nums[0])
 }
 
-/* 
-    封装一个任意两个数之间的随机整数
-    作用：按照条件生成随机数
-    参数：两个参数 参数的类型number类型
-        n1
-        n2
-    返回值：
-        把生成的随机当成函数的返回值返回
-*/
-function randomNum(n1, n2) {
+/**
+ * 取任意两数中的一个随机整数
+ * @param {number} n1 第一个数
+ * @param {number} n2 第二个数
+ * @returns {number} 一个随机整数
+ */
+export function randomNum(n1, n2) {
     var max = n1 > n2 ? n1 : n2;
     var min = n1 < n2 ? n1 : n2;
     var res = parseInt(Math.random() * (max - min + 1) + min);
     return res;
 }
+
+/**
+ * 返回数组中大于等于target的数的下标
+ * @param nums 数组
+ * @param target 指定的数
+ * @returns {number} 第一个大于等于target的数的下标
+ */
+function lowerBound(nums,target) {
+    // 二分范围（left,rght）
+    let left = -1,right = nums.length;
+    while (left+1 < right) {
+        // 循环不变量 nums[left] < target nums[right] >= target
+        const mid = Math.floor((left+right)/2);
+        if(nums[mid] >= target) {
+            // 更新二分区间为左区间
+            right = mid;
+        } else {
+            // 更新二分区间为右区间
+            left = mid;
+        }
+    }
+    // 此时left = right - 1  nums[right] >= target
+    return right;
+}
+
 
 /*
     作用：对默认时间对象进行格式化
