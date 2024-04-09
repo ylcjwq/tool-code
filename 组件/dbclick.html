@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<!-- 使用延时器和click实现双击事件 -->
+
+<body>
+    <div id="myElement" style="width: 200px;height: 200px;background-color: aqua;"></div>
+</body>
+<script>
+    let timer = null;
+    let clicked = false;
+    const element = document.getElementById('myElement');
+
+    function handleClick() {
+        if (!clicked) {
+            console.log('click!');
+            clicked = true;
+        } else {
+            console.log('daclick!');
+            clicked = false
+        }
+        clearTimeout(timer);
+        timer = null;
+        timer = setTimeout(() => {
+            clicked = false;
+        }, 2000);
+    }
+
+    element.addEventListener('click', handleClick);
+</script>
+
+</html>
