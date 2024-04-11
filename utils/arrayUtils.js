@@ -45,16 +45,25 @@ export function lowerBound(nums, target) {
 /**
  * 数组对象根据指定的元素去重
  * @param {Object[]} array 要去重的数组
- * @param {string} tag 要对比去重的元素
+ * @param {string[]} tags 要对比去重的元素
  * @returns {Object[]} 去重后的新数组
  */
-export const deleteSameObiect = (array, tag) => {
+export const deleteSameObiect = (array, ...tags) => {
     const map = new Map();
     return array.filter(item => {
-        if (!map.has(item[tag])) {
-            map.set(item[tag], item);
+        const key = tags.map(tag => item[tag]).join('|');
+        if (!map.has(key)) {
+            map.set(key, item);
             return true
         }
         return false
     })
 }
+
+let arr = [
+    {'a':1,'b':2,'c':3},
+    {'a':2,'b':2,'c':4},
+    {'a':3,'b':3,'c':3},
+    {'a':1,'b':2,'c':8},
+]
+deleteSameObiect(arr,'a')
