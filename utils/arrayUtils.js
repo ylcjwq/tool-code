@@ -43,7 +43,7 @@ export function lowerBound(nums, target) {
 }
 
 /**
- * 数组对象根据指定的元素去重
+ * 数组对象根据指定的元素去重（对比元素全部相同）
  * @param {Object[]} array 要去重的数组
  * @param {string[]} tags 要对比去重的元素
  * @returns {Object[]} 去重后的新数组
