@@ -11,6 +11,20 @@ export function randomNum(n1, n2) {
     return res;
 }
 
+/**
+ * 防抖函数
+ * @param {Function} fn
+ * @param {number} t milliseconds
+ * @return {Function}
+ */
+var debounce = function(fn, t) {
+    let time = null
+    return function(...args) {
+        if(time) clearTimeout(time)
+        time = setTimeout(fn,t,...args)
+    }
+};
+
 /*
     作用：对默认时间对象进行格式化
     参数：
