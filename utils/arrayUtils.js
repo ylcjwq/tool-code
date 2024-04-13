@@ -53,10 +53,10 @@ export const LIS = (nums) => {
     const temp = [[nums[0]]];
     for(let i =0;i<nums.length;i++) {
         const n = nums[i];
-        _updata(n)
+        _update(n)
     }
     return temp.at(-1);
-    function _updata(n) {
+    function _update(n) {
         for(let i =temp.length - 1; i>=0; i--) {
             const line = temp[i]
             const tail = line.at(-1);
