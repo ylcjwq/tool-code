@@ -48,7 +48,7 @@ export function lowerBound(nums, target) {
  * @returns {number|string[]} 最大递增子序列
  * @constructor
  */
-export const LIS = (nums) => {
+export const arrayLIS = (nums) => {
     if (nums.length === 0) return [];
     const temp = [[nums[0]]];
     for(let i =0;i<nums.length;i++) {
@@ -64,7 +64,7 @@ export const LIS = (nums) => {
                 temp[i+1] = [...line,n];
                 break;
             } else if(n<tail && i === 0) {
-                temp[i] = n;
+                temp[i] = [n];
             }
         }
     }
