@@ -76,7 +76,7 @@ export const arrayLIS = (nums) => {
  * @param {string[]} tags 要对比去重的元素
  * @returns {Object[]} 去重后的新数组
  */
-export const deleteSameObiect = (array, ...tags) => {
+export const removeSameObiect = (array, ...tags) => {
     const map = new Map();
     return array.filter(item => {
         const key = tags.map(tag => item[tag]).join('|');
@@ -86,4 +86,22 @@ export const deleteSameObiect = (array, ...tags) => {
         }
         return false
     })
+}
+
+/**
+ * 数组对象根据指定的元素去重（所有元素全部相同）
+ * @param {Object[]} array 要去重的数组
+ * @returns {Object[]} 去重后的新数组
+ */
+export const removeSameObjectAll = (array) => {
+    const set = new Set();
+    const uniqueObjects = [];
+    for (const obj of array) {
+        const objString = JSON.stringify(obj);
+        if (!set.has(objString)) {
+            set.add(objString);
+            uniqueObjects.push(obj);
+        }
+    }
+    return uniqueObjects;
 }
