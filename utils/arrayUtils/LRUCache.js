@@ -45,6 +45,6 @@ LRUCache.prototype.set = function (key,value) {
  * 返回当前缓存中所存储的对象
  * @returns {{[p: string]: any}}
  */
-LRUCache.prototype.array = function () {
+LRUCache.prototype.toObject = function () {
     return Object.fromEntries(this.map);
 }
