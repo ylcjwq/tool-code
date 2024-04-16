@@ -20,12 +20,12 @@ export function maxNumber(nums) {
 
 /**
  * 返回数组中第一个大于等于target的数的下标，如果不存在，则返回数组的长度
- * @param nums 数组
- * @param target 指定的数
+ * @param {number[]} nums 数组
+ * @param {number} target 指定的数
  * @returns {number} 第一个大于等于target的数的下标
  */
-export function lowerBound(nums, target) {
-    // 二分范围（left,rght）
+export function binarySearchRight(nums, target) {
+    // 二分范围（left,right）
     let left = -1, right = nums.length;
     while (left + 1 < right) {
         // 循环不变量 nums[left] < target nums[right] >= target
@@ -40,6 +40,28 @@ export function lowerBound(nums, target) {
     }
     // 此时left = right - 1  nums[right] >= target
     return right;
+}
+
+/**
+ * 返回数组中第一个小于等于target的数的下标，如果不存在，则返回-1
+ * @param {number[]} nums 数组
+ * @param {number} target 指定的数
+ * @returns {number} 第一个小于等于target的数的下标
+ */
+function binarySearchLeft(nums, target) {
+    // 二分范围（left,right）
+    let left = -1, right = nums.length;
+    while (left + 1 < right) {
+        const mid = Math.floor((left + right) / 2);
+        if (nums[mid] <= target) {
+            // 更新二分区间为左区间
+            left = mid;
+        } else {
+            // 更新二分区间为右区间
+            right = mid;
+        }
+    }
+    return left;
 }
 
 /**
