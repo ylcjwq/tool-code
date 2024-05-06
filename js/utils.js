@@ -1,15 +1,3 @@
-/**
- * 取任意两数中的一个随机整数
- * @param {number} n1 第一个数
- * @param {number} n2 第二个数
- * @returns {number} 一个随机整数
- */
-export function randomNum(n1, n2) {
-    var max = n1 > n2 ? n1 : n2;
-    var min = n1 < n2 ? n1 : n2;
-    var res = parseInt(Math.random() * (max - min + 1) + min);
-    return res;
-}
 
 /**
  * 防抖函数
