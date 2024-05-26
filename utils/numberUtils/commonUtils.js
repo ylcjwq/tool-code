@@ -14,9 +14,12 @@ export function randomNum(n1, n2) {
  * 返回从start累加到end的结果
  * @param {number} start 累加开始的数
  * @param {number} end   累加结束的数
+ * @param {number} step  步长
  * @returns {number}   累加后的结果
  */
-export const accumulate = (start,end) => {
+export const accumulate = (start,end, step = 1) => {
+    // 计算项数
+    const numberOfTerms = Math.floor((end - start) / step) + 1;
     // 等差数列求和公式
-    return (start + end) * (end-start+1) / 2
+    return (start + end) * numberOfTerms / 2;
 }
